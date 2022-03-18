@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+<style> 
+body {
+  height:50vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.toggle-container {
+  display:flex;
+  align-items: center;
+  margin: 10px 0px;
+  width:300px;
+  gap:10px;
+}
+
+.toggle {
+  visibility:hidden;
+}
+
+.label {
+  background-color:#d0d0d0;
+  width: 80px;
+  height: 40px;
+  border-radius:50px;
+  cursor:pointer;
+  display:  flex;
+  align-items: center;
+}
+
+.toggle:checked + .label {
+  background-color: #8e44ad;
+}
+
+
+.ball {
+  background: #fff;
+  height: 34px;
+  width: 34px;
+  border-radius: 50px;
+  margin-left: 3px;
+  animation: slideOff 0.3s linear backwards;
+}
+
+.toggle:checked + .label .ball {
+  animation: slideOn 0.3s linear forwards;
+}
+
+@keyframes slideOn {
+  0%{
+    transform: translateX(0px) scale(1);
+  }
+  50%{
+    transform: translateX(20px) scale(1.2);
+  }
+  100%{
+    transform: translateX(40px) scale(1);
+  }
+}
+
+@keyframes slideOff {
+  0%{
+    transform: translateX(40px) scale(1);
+  }
+  50%{
+    transform: translateX(20px) scale(1.2);
+  }
+  100%{
+    transform: translateX(0px) scale(1);
+  }
+}
+</style>
+
+    <h1>????? ?????? ??????</h1>
+<div class="toggle-container">
+<input type="Checkbox" id="good" class="toggle">
+<label for="good" class="label">
+  <div class="ball"></div>
+</label>
+<span>?? ????? ?? ?????</span>
+</div>
+
+<div class="toggle-container">
+<input type="Checkbox" id="cheap" class="toggle">
+<label for="cheap" class="label">
+  <div class="ball"></div>
+</label>
+<span>???? ??????</span>
+</div>
+
+<div class="toggle-container">
+<input type="Checkbox" id="fast" class="toggle">
+<label for="fast" class="label">
+  <div class="ball"></div>
+</label>
+<span>???????? ????</span>
+</div>
+
+</body>
+
+<script> 
+const toggles = document.querySelectorAll('.toggle')
+const good = document.querySelector('#good')
+const cheap = document.querySelector('#cheap')
+const fast = document.querySelector('#fast')
+
+toggles.forEach(toggle => toggle.addEventListener('change', (e) => doTheTrick(e.target)))
+
+function doTheTrick (theClickedOne) {
+if(good.checked && cheap.checked && fast.checked) {
+if(good === theClickedOne) {
+fast.checked = false
+}
+if(cheap === theClickedOne){
+good.checked = false
+}
+if(fast === theClickedOne){
+cheap.checked = false
+}
+}
+}
+</script>
+
+</html>
